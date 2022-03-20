@@ -1,15 +1,18 @@
 # Simple Contact Application
-SpringBoot
-JPA
-Hibernate
-PostgreSql
-Thymeleaf
+SpringBoot  
+JPA  
+Hibernate  
+PostgreSql  
+Thymeleaf + SB Admin 2  
 
 Groups Validated difference case when insert and updated  
 Custom Annotation for phone-number, and unique email-address  
 Pagination for list and search list  
 Search list by multiple columns  
 SoftDelete for contact deleted  
+
+![image](https://user-images.githubusercontent.com/44139279/159170694-e1f09cc8-2e7e-4d27-a6c9-b13342ec9dd3.png)  
+
 
 # How to run this application  
 
