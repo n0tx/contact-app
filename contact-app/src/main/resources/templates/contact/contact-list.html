@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="eng"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{fragments/main_layout}">
+<body>
+	<div layout:fragment="content">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h5 class="m-0 font-weight-bold text-primary">Contact List</h5>
+			</div>
+			<div class="card-body py-2">
+				<a th:href="@{/contact/new}" class="btn btn-success" role="button">Add Contact</a>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<div id="dataTable_wrapper"
+						class="dataTables_wrapper dt-bootstrap4">
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table table-bordered dataTable" id="dataTable"
+									role="grid" aria-describedby="dataTable_info"
+									style="width: 100%;">
+									<thead>
+										<tr>
+											<th>Full Name</th>
+											<th>Email</th>
+											<th>Birth Date</th>
+											<th>Phone Number</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="contactResult:${contacts.results}">
+											<td th:text="${contactResult.fullname}"></td>
+											<td th:text="${contactResult.email}"></td>
+											<td th:text="${#temporals.format(contactResult.birthDate, 'dd-MM-yyyy')}"></td>
+											<td th:text="${contactResult.phoneNumber}"></td>
+											<td>
+												<div>
+													<div>
+														<a th:href="@{/contact/update/{id}(id=${contactResult.id})}" class="btn btn-warning" role="button">Edit</a>
+														<a th:href="@{/contact/delete/{id}(id=${contactResult.id})}" class="btn btn-danger" role="button">Delete</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-8"></div>
+							<div  class="col-sm-4">
+								<div th:if="${contacts.pages > 0}" class="card-body">
+									<nav aria-label="Page navigation example">
+									   <ul class="pagination">
+      								  		<li class="page-item" th:classappend="${contacts.page < 1 ? 'disabled' : ''}">
+                        						<a class="page-link" th:href="@{/(page=${contacts.page-1})}" tabindex="-1" aria-label="Previous">
+                        							<span aria-hidden="true">&laquo;</span>
+        											<span class="sr-only" th:text="Previous"></span>
+                        						</a>
+                        					</li>
+      								  		<th:block th:each="pageNumber : ${#numbers.sequence( 0, contacts.pages - 1, 1)}">
+											  	<li  class="page-item" th:classappend="${contacts.page == pageNumber ? 'active' : ''}">
+											  		<a class="page-link" th:href="@{/(page=${pageNumber})}" th:text="${pageNumber+1}"></a>
+											  	</li>
+											</th:block>
+											<li class="page-item" th:classappend="${contacts.page == contacts.pages-1 ? 'disabled' : ''}">
+                        						<a class="page-link" th:href="@{/(page=${contacts.page+1})}" aria-label="Next">
+                        							<span aria-hidden="true">&raquo;</span>
+                        							<span class="sr-only" th:text="Next"></span>
+                        						</a>
+                        					</li>
+									  </ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
