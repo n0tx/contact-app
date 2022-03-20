@@ -18,34 +18,34 @@ $java --version
 11
 
 ## Setup database
-according to the configuration in application.properties
-postgre user: springboot
-postgre password: springboot
-postgre database: contact
+according to the configuration in application.properties  
+postgre user: springboot  
+postgre password: springboot  
+postgre database: contact  
 
 ## Build And Create jar of project 
-1. Clone Repository
+1. Clone Repository  
 $git clone https://github.com/n0tx/contact-app.git
-2. Import to IDE
+2. Import to IDE  
 MenuFile -> Import -> Maven / Existing Maven Projects
-3. Build the Project
+3. Build the Project  
 RightClick Project -> Run AS -> 5 Maven Build... -> Goals:clean package -DskipTests
 4. Start PostgreSql service up
-5. Run with cli
-a generated executable jar will exist in target directory in project folder
-$java --version
-11
-$java -jar contact-app-0.0.1-SNAPSHOT.jar
-6. Access Browser Url
+5. Run with cli  
+a generated executable jar will exist in target directory in project folder  
+$java --version  
+11  
+$java -jar contact-app-0.0.1-SNAPSHOT.jar  
+6. Access Browser Url  
 http://localhost:8080
 
 
 ## Auto build and run with IDE
-1. Clone Repository
+1. Clone Repository  
 $git clone https://github.com/n0tx/contact-app.git
-2. Import to IDE
-MenuFile -> Import -> Maven / Existing Maven Projects
+2. Import to IDE  
+MenuFile -> Import -> Maven / Existing Maven Projects  
 3. Start Postgresql database Service Up
 4. RightClick Project -> Run As -> Spring Boot App
-5. Access Browser Url
+5. Access Browser Url  
 http://localhost:8080
